@@ -1,9 +1,11 @@
 package com.github.zipcodewilmington;
 
+import com.github.zipcodewilmington.sample.MyNode;
 import org.w3c.dom.Node;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xtofer
@@ -12,11 +14,12 @@ import java.util.List;
  */
 public class DashaMapOne<E,T> implements HashMapX {
 
-    Node[] nodeArray;
+    MyNode[] nodeArray;
 
     public DashaMapOne (){
 
-      nodeArray = new Node[26];
+      nodeArray = new MyNode[26];
+
 
     }
 
@@ -31,11 +34,23 @@ public class DashaMapOne<E,T> implements HashMapX {
         return null;
     }
 
-
+   //.set is equivalent to a .add function of an arraylist
 
 
     @Override
-    public void set(String key, String value) {
+    public void set(String key, Integer value) {
+        MyNode newNode = new MyNode(key, value);
+        int emptyNode = 0;
+        for (int i = 0; i < nodeArray.length; i++) {
+            if (nodeArray[i].getNext() == null){
+                emptyNode = i;
+                break;
+            }//find
+        }
+
+        nodeArray[emptyNode].setNext(newNode);
+
+        nodeArray[emptyNode+1] = newNode;
 
     }
 
