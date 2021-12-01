@@ -20,6 +20,8 @@ public class DashaMapOne<E,T> implements HashMapX {
 
     }
 
+    //TODO
+    //utilize the method from the interface against the array of 26 letters
 
     private String HashFunctionOne(String input) {
 //        if (input.length() > 0) {
