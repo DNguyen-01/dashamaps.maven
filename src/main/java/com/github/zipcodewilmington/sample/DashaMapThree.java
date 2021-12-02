@@ -2,15 +2,15 @@ package com.github.zipcodewilmington.sample;
 
 import com.github.zipcodewilmington.HashMapX;
 
-public class DashaMapThree<T,E> implements HashMapX {
+public class DashaMapThree<E,T> implements HashMapX {
 
 
 
 
     private String HashFunctionThree(String input) {
-//        if (input.length() > 1) {
-//            return String.toLowerCase(String.valueOf(input.charAt(0)+input.charAt(1)));
-//        }
+        if (input.length() > 1) {
+            return String.valueOf((input.charAt(0)+input.charAt(1))).toLowerCase();
+        }
         return null;
     }
 
@@ -18,17 +18,17 @@ public class DashaMapThree<T,E> implements HashMapX {
 
 
     @Override
-    public void set(String key, String value) {
+    public void set(Object key, Object value) {
 
     }
 
     @Override
-    public String delete(String key) {
+    public E delete(Object key) {
         return null;
     }
 
     @Override
-    public String get(String key) {
+    public E get(Object key) {
         return null;
     }
 
@@ -43,7 +43,7 @@ public class DashaMapThree<T,E> implements HashMapX {
     }
 
     @Override
-    public boolean bucketSize(String key) {
+    public boolean bucketSize(Object key) {
         return false;
     }
 }

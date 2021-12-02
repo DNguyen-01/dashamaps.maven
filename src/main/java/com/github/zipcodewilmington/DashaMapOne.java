@@ -1,11 +1,6 @@
 package com.github.zipcodewilmington;
 
-import com.github.zipcodewilmington.sample.MyNode;
-import org.w3c.dom.Node;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.github.zipcodewilmington.sample.MyLinkedList;
 
 /**
  * @author xtofer
@@ -14,12 +9,11 @@ import java.util.Map;
  */
 public class DashaMapOne<E,T> implements HashMapX {
 
-    MyNode[] nodeArray;
+    MyLinkedList[] nodeArray;
 
     public DashaMapOne (){
 
-      nodeArray = new MyNode[26];
-
+      nodeArray = new MyLinkedList[26];
 
     }
 
@@ -27,40 +21,61 @@ public class DashaMapOne<E,T> implements HashMapX {
     //utilize the method from the interface against the array of 26 letters
 
     private String HashFunctionOne(String input) {
-//        if (input.length() > 0) {
-//
-//            return String.toLowerCase(String.valueOf(input.charAt(0)));
-//        }
+        if (input.length() > 0) {
+            return String.valueOf(input.charAt(0)).toLowerCase();
+        }
         return null;
     }
 
    //.set is equivalent to a .add function of an arraylist
 
 
+//    @Override
+//    public void set(String key, Integer value) {
+//        MyNode newNode = new MyNode(key, value);
+//        int emptyNode = 0;
+//        for (int i = 0; i < nodeArray.length; i++) {
+//            if (nodeArray[i].getNext() == null){
+//                emptyNode = i;
+//                break;
+//            }
+//        }
+//
+//        nodeArray[emptyNode].setNext(newNode);
+//
+//        nodeArray[emptyNode+1] = newNode;
+//
+//    }
+
     @Override
-    public void set(String key, Integer value) {
-        MyNode newNode = new MyNode(key, value);
-        int emptyNode = 0;
-        for (int i = 0; i < nodeArray.length; i++) {
-            if (nodeArray[i].getNext() == null){
+    public void set(Object key, Object value) {
+
+        MyLinkedList newNode = new MyLinkedList();
+        Integer emptyNode = 0;
+        for (Integer i = 0; i < nodeArray.length; i++) {
+            if (nodeArray[i+1].get(key) == null){
                 emptyNode = i;
                 break;
-            }//find
+            }
         }
 
-        nodeArray[emptyNode].setNext(newNode);
+        nodeArray[emptyNode].set(newNode);
 
-        nodeArray[emptyNode+1] = newNode;
+        nodeArray[emptyNode] = newNode;
 
     }
 
     @Override
-    public String delete(String key) {
+    public E delete(Object key) {
+
+        MyLinkedList newNode = new MyLinkedList<>();
+
+
         return null;
     }
 
     @Override
-    public String get(String key) {
+    public E get(Object key) {
         return null;
     }
 
@@ -75,7 +90,7 @@ public class DashaMapOne<E,T> implements HashMapX {
     }
 
     @Override
-    public boolean bucketSize(String key) {
+    public boolean bucketSize(Object key) {
         return false;
     }
 }
